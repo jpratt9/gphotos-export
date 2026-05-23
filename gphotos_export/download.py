@@ -9,7 +9,7 @@ import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
-from utils import (
+from .utils import (
     create_driver, setup_logging, read_progress, save_progress, clean_url,
     organize_file, wait_for_download, human_delay, load_skiplist,
     SESSION_DIR, SESSION_DIR_BACKWARD, DOWNLOADS_DIR,
@@ -177,7 +177,7 @@ def main():
 
     if not session_dir.exists():
         flag = " --backward" if args.backward else ""
-        log.error("No session found. Run: python setup.py%s", flag)
+        log.error("No session found. Run: gphotos-export-login%s", flag)
         sys.exit(1)
 
     # For backward mode, if no .lastdone-backward exists, start from latest photo.
@@ -257,7 +257,7 @@ def main():
 
             if "photos.google.com" not in current_url:
                 log.error("[%s] Navigated away from Google Photos: %s", mode_label, current_url)
-                log.error("Session may have expired. Re-run setup.py to log in again.")
+                log.error("Session may have expired. Re-run gphotos-export-login to log in again.")
                 break
 
             try:

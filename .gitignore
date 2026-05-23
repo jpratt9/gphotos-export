@@ -1,12 +1,32 @@
+# Runtime data (created in the working directory where you run the tool)
 session/
 session-backward/
 downloads/
 downloads-2/
+downloaded_files/
 logs/
 .lastdone
 .lastdone.tmp
 backward.lastdone
 backward.lastdone.tmp
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Tests / tooling
 .pytest_cache/
+.ruff_cache/
+.coverage
+
+# Environments / editor / OS
+.venv/
+venv/
+.env
+.DS_Store
+.claude/
+CLAUDE.md

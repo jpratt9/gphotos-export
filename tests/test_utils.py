@@ -1,15 +1,10 @@
-"""Tests for utils module."""
+"""Tests for the gphotos_export.utils module."""
 
-import os
-import sys
-from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
 
-sys.path.insert(0, os.path.dirname(__file__))
-
-from utils import (
+from gphotos_export.utils import (
     clean_url,
     file_already_downloaded,
     load_skiplist,
@@ -59,7 +54,7 @@ class TestOrganizeFile:
         downloads.mkdir()
 
         driver = MagicMock()
-        with patch("utils.get_media_date", return_value=(2024, 6)):
+        with patch("gphotos_export.utils.get_media_date", return_value=(2024, 6)):
             result = organize_file(src, downloads, driver)
 
         assert result == downloads / "2024" / "6" / "photo.jpg"
@@ -76,7 +71,7 @@ class TestOrganizeFile:
         src.write_bytes(b"\xff\xd8\xff")
 
         driver = MagicMock()
-        with patch("utils.get_media_date", return_value=(2024, 6)):
+        with patch("gphotos_export.utils.get_media_date", return_value=(2024, 6)):
             result = organize_file(src, downloads, driver, overwrite=False)
 
         assert result.name == "photo 2.jpg"
@@ -93,7 +88,7 @@ class TestOrganizeFile:
         src.write_bytes(b"\xff\xd8\xff")
 
         driver = MagicMock()
-        with patch("utils.get_media_date", return_value=(2024, 6)):
+        with patch("gphotos_export.utils.get_media_date", return_value=(2024, 6)):
             result = organize_file(src, downloads, driver, overwrite=False)
 
         assert result.name == "photo 3.jpg"
@@ -108,7 +103,7 @@ class TestOrganizeFile:
         src.write_bytes(b"new")
 
         driver = MagicMock()
-        with patch("utils.get_media_date", return_value=(2024, 6)):
+        with patch("gphotos_export.utils.get_media_date", return_value=(2024, 6)):
             result = organize_file(src, downloads, driver, overwrite=True)
 
         assert result.name == "photo.jpg"
@@ -131,8 +126,8 @@ class TestOrganizeFileZip:
         downloads.mkdir()
 
         driver = MagicMock()
-        with patch("utils.get_media_date", return_value=(2024, 6)), \
-             patch("utils.get_date_from_html", return_value=(2024, 6)):
+        with patch("gphotos_export.utils.get_media_date", return_value=(2024, 6)), \
+             patch("gphotos_export.utils.get_date_from_html", return_value=(2024, 6)):
             result = organize_file(zip_path, downloads, driver)
 
         assert (downloads / "2024" / "6" / "photo1.jpg").exists()
@@ -149,7 +144,7 @@ class TestOrganizeFileZip:
         downloads.mkdir()
 
         driver = MagicMock()
-        with patch("utils.get_media_date", return_value=(2024, 6)):
+        with patch("gphotos_export.utils.get_media_date", return_value=(2024, 6)):
             result = organize_file(fake_zip, downloads, driver)
 
         assert result == downloads / "2024" / "6" / "notazip.zip"

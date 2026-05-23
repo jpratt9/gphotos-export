@@ -5,7 +5,7 @@ import argparse
 import logging
 import time
 
-from utils import (
+from .utils import (
     create_driver, setup_logging,
     SESSION_DIR, SESSION_DIR_BACKWARD,
     STAGING_DIR, STAGING_DIR_BACKWARD,
