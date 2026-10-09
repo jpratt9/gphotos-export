@@ -1,5 +1,7 @@
 # gphotos-export
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/prattsolutions)
+
 Bulk-download your entire Google Photos library in original quality via undetected browser automation.
 
 ## Why this exists
